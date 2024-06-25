@@ -1,4 +1,4 @@
-package com.example.auth.domain.product.user;
+package com.example.auth.domain.user;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,10 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "user")
+@Table(name = "users")
 @Entity(name = "users")
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -41,6 +40,7 @@ public class User implements UserDetails {
                     new SimpleGrantedAuthority("ROLE_USER"));
         else return List.of(new SimpleGrantedAuthority("ROLE_USER") );  // se não, retorna apenas a role de user
     }
+
     @Override
     public String getUsername() {
         return login;
